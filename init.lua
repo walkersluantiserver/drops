@@ -64,7 +64,7 @@ function minetest.handle_node_drops(pos, drops, digger)
 				if obj ~= nil then
 					obj:get_luaentity().collect = true
 					obj:get_luaentity().age = age
-					obj:setvelocity({x=math.random(-3,3), y=math.random(2,5), z=math.random(-3,3)})
+					obj:setvelocity({x=math.random(-1,1), y=0, z=math.random(-1,1)})
 				end
 			end
 		--end
@@ -92,7 +92,7 @@ function minetest.item_drop(itemstack, dropper, pos)
 			return itemstack
 		end
 	--machine
-	else
+	elseif dropper then
 		local v = dropper:get_look_dir()
 		local item = itemstack:to_string()
 		local obj = minetest.add_item({x=pos.x,y=pos.y+1.5,z=pos.z}, item) --{x=pos.x+v.x,y=pos.y+v.y+1.5,z=pos.z+v.z}
@@ -105,6 +105,8 @@ function minetest.item_drop(itemstack, dropper, pos)
 			itemstack:clear()
 			return itemstack
 		end
+	else
+		nminetest.add_item(pos, itemstack:to_string())
 	end
 end
 if minetest.settings:get_bool("log_mods") then
