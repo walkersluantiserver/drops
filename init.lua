@@ -106,7 +106,7 @@ function minetest.item_drop(itemstack, dropper, pos)
 			return itemstack
 		end
 	else
-		nminetest.add_item(pos, itemstack:to_string())
+		minetest.add_item(pos, itemstack:to_string())
 	end
 end
 if minetest.settings:get_bool("log_mods") then
