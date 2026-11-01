@@ -64,7 +64,7 @@ function minetest.handle_node_drops(pos, drops, digger)
 				if obj ~= nil then
 					obj:get_luaentity().collect = true
 					obj:get_luaentity().age = age
-					obj:setvelocity({x=math.random(-1,1), y=0, z=math.random(-1,1)})
+					obj:setvelocity({x=0, y=0, z=0})
 				end
 			end
 		--end
